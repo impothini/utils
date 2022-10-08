@@ -1,0 +1,25 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "lyrical-marker-362301",
+      "source_image": "centos-7-v20220822",
+      "ssh_username": "packer",
+      "zone": "us-central1-a",
+      "account_file": "gcpLearn.json"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "echo foo",
+        "sudo yum install nginx -y"
+      ]
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "./playbook.yml"
+    }
+  ]
+}

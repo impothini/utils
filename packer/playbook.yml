@@ -1,0 +1,17 @@
+---
+# playbook.yml
+- name: 'Provision Image'
+  hosts: default
+  become: true
+
+  tasks:
+    - name: install linux packages
+      package:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - httpd
+        - ansible
+        - python3
+        - telnet
+
